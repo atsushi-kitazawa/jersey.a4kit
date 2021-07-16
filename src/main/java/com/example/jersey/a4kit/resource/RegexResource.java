@@ -13,7 +13,7 @@ public class RegexResource {
 
 	@GET
 	@Path("/hello/{name: foo|bar|ahe}/{id}")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.TEXT_HTML)
 	public Response hello(@PathParam("name") String name,
 			@PathParam("id") String id) {
 
