@@ -12,13 +12,16 @@ import com.example.jersey.a4kit.exception.DefaultErrorHelper.ResponseMediaType;
 
 public class HttpServerFactory {
 	protected static HttpServer createHttpServer() throws IOException {
-		ResourceConfig resourceConfig = new ResourceConfig().packages("com.example.jersey.a4kit.resource")
+		ResourceConfig resourceConfig = new ResourceConfig()
+				.packages("com.example.jersey.a4kit.resource")
 				.register(JacksonFeature.class);
 
 		System.out.println("Starting grizzly2...");
-		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(ServerConfig.getBaseURI(), resourceConfig, false);
+		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(
+				ServerConfig.getBaseURI(), resourceConfig, false);
 		server.getServerConfiguration()
-				.setDefaultErrorPageGenerator(DefaultErrorHelper.getDefaultErrorResponse(ResponseMediaType.JSON));
+				.setDefaultErrorPageGenerator(DefaultErrorHelper
+						.getDefaultErrorResponse(ResponseMediaType.JSON));
 		return server;
 	}
 }
